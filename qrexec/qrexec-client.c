@@ -626,11 +626,18 @@ static void wait_for_vchan_client_with_timeout(libvchan_t *conn, int timeout) {
             FD_ZERO(&rdset);
             FD_SET(fd, &rdset);
             switch (select(fd+1, &rdset, NULL, NULL, &timeout_tv)) {
-                case -1:
-                    if (errno == EINTR)
+                //case -1:
+                    //if (errno == EINTR)
+                        //break;
+                    ///* fallthough */
+                //case 0:
+                    //fprintf(stderr, "vchan connection timeout (or error)\n");
+                    //libvchan_close(conn);
+                    //do_exit(1);
+                default:
+                    if (errno == EINTR)	{
                         break;
-                    /* fallthough */
-                case 0:
+                    }
                     fprintf(stderr, "vchan connection timeout (or error)\n");
                     libvchan_close(conn);
                     do_exit(1);
