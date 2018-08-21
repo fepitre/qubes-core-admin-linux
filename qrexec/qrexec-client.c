@@ -253,7 +253,7 @@ static void send_service_connect(int s, char *conn_ident,
 
     exec_params.connect_domain = connect_domain;
     exec_params.connect_port = connect_port;
-    strncpy(srv_params.ident, conn_ident, sizeof(srv_params.ident));
+    memcpy(srv_params.ident, conn_ident, sizeof(srv_params.ident));
 
     if (!write_all(s, &hdr, sizeof(hdr))
             || !write_all(s, &exec_params, sizeof(exec_params))
@@ -722,7 +722,7 @@ int main(int argc, char **argv)
     if (strcmp(domname, "dom0") == 0) {
         if (connect_existing) {
             msg_type = MSG_SERVICE_CONNECT;
-            strncpy(svc_params.ident, request_id, sizeof(svc_params.ident));
+            memcpy(svc_params.ident, request_id, sizeof(svc_params.ident));
         } else if (just_exec)
             msg_type = MSG_JUST_EXEC;
         else
