@@ -220,8 +220,8 @@ chmod -x /etc/grub.d/10_linux
 %attr(0664,root,qubes) %config(noreplace) /etc/qubes-rpc/policy/qubes.ReceiveUpdates
 %attr(0770,root,qubes) %dir /var/lib/qubes/updates
 # Qrexec services
-/etc/qubes-rpc/qubes.repos.*
-/usr/lib/qubes/qubes-rpc/qubes.repos.*
+/etc/qubes-rpc/qubes.*
+/usr/lib/qubes/qubes-rpc/qubes.*
 %attr(0664,root,qubes) %config(noreplace) /etc/qubes-rpc/policy/qubes.repos.List
 %attr(0664,root,qubes) %config(noreplace) /etc/qubes-rpc/policy/qubes.repos.Enable
 %attr(0664,root,qubes) %config(noreplace) /etc/qubes-rpc/policy/qubes.repos.Disable
